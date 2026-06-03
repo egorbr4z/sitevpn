@@ -27,6 +27,7 @@
       --accent-glow: rgba(0, 224, 255, 0.35);
       --green: #2ec27e;
       --yellow: #f2c14e;
+      --amber: #f0a830;
       --red: #f25c5c;
       --radius: 16px;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -404,13 +405,12 @@
     }
     .plan .pprice span { font-size: 14px; color: var(--text-faint); font-weight: 500; }
     .plan .pspeed {
-      margin: 20px 0 22px;
+      margin: 20px 0 0;
       border-top: 1px solid var(--border-soft);
       padding-top: 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      flex-grow: 1;
     }
     .pspeed .row {
       display: flex;
@@ -421,6 +421,32 @@
     .pspeed .row .lbl { color: var(--text-faint); }
     .pspeed .row .val { font-weight: 600; color: var(--text); }
     .pspeed .row .val.dim { color: var(--text-dim); font-weight: 500; }
+    .puse {
+      list-style: none;
+      margin: 20px 0 22px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex-grow: 1;
+    }
+    .puse li {
+      position: relative;
+      padding-left: 26px;
+      font-size: 13.5px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+    .puse li::before {
+      position: absolute;
+      left: 0; top: 1px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .puse li.ok::before { content: '✓'; color: var(--accent); }
+    .puse li.no { color: var(--text-faint); }
+    .puse li.no::before { content: '✕'; color: var(--red); }
     .plan .btn { width: 100%; padding: 12px; font-size: 15px; }
     .plan-foot-note {
       margin-top: 32px;
@@ -717,6 +743,24 @@
 
     .brand-accent { color: var(--accent); }
 
+    /* ---------- What to know (warning section) ---------- */
+    .section-warn {
+      border-top: 2px solid var(--amber);
+      background:
+        radial-gradient(900px circle at 50% 0%, rgba(240,168,48,0.07), transparent 55%),
+        rgba(240,168,48,0.018);
+    }
+    .warn-eyebrow { color: var(--amber); }
+    .know-cards { margin-top: 52px; }
+    .card.know { border-color: rgba(240,168,48,0.22); }
+    .card.know:hover { border-color: rgba(240,168,48,0.5); }
+    .card.know::before { background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 0%), rgba(240,168,48,0.1), transparent 45%); }
+    .warn-icon {
+      background: rgba(240,168,48,0.12);
+      border-color: rgba(240,168,48,0.3);
+      color: var(--amber);
+    }
+
     /* ---------- Honest cons ---------- */
     .cons-list {
       display: grid;
@@ -870,22 +914,38 @@
           <div class="pdev">до 3 устройств</div>
           <div class="pprice">59₽<span> /мес</span></div>
           <div class="pspeed">
-            <div class="row"><span class="lbl">Норма</span><span class="val">80 Мбит/с</span></div>
-            <div class="row"><span class="lbl">Нагрузка</span><span class="val dim">25 Мбит/с</span></div>
+            <div class="row"><span class="lbl">Норма</span><span class="val">150 Мбит/с</span></div>
+            <div class="row"><span class="lbl">Нагрузка</span><span class="val dim">30 Мбит/с</span></div>
             <div class="row"><span class="lbl">Приоритет QoS</span><span class="val dim">базовый</span></div>
           </div>
+          <ul class="puse">
+            <li class="ok">Telegram, WhatsApp, мессенджеры</li>
+            <li class="ok">Браузер, соцсети</li>
+            <li class="ok">YouTube до 1080p в спокойное время</li>
+            <li class="ok">Музыка, подкасты</li>
+            <li class="no">Не для раздачи торрентов</li>
+            <li class="no">Не для стриминга 4K постоянно</li>
+          </ul>
           <a href="https://t.me/mrbr4z" target="_blank" rel="noopener" class="btn btn-outline">Купить</a>
         </div>
         <div class="plan featured reveal d2">
-          <div class="badge">Рекомендуем</div>
+          <div class="badge">Популярный</div>
           <div class="pname">Стабильный</div>
-          <div class="pdev">до 12 устройств</div>
+          <div class="pdev">до 10 устройств</div>
           <div class="pprice">179₽<span> /мес</span></div>
           <div class="pspeed">
-            <div class="row"><span class="lbl">Норма</span><span class="val">150 Мбит/с</span></div>
-            <div class="row"><span class="lbl">Нагрузка</span><span class="val">60 Мбит/с</span></div>
+            <div class="row"><span class="lbl">Норма</span><span class="val">300 Мбит/с</span></div>
+            <div class="row"><span class="lbl">Нагрузка</span><span class="val">80 Мбит/с</span></div>
             <div class="row"><span class="lbl">Приоритет QoS</span><span class="val">высокий</span></div>
           </div>
+          <ul class="puse">
+            <li class="ok">YouTube 4K</li>
+            <li class="ok">Видеозвонки (Zoom, Meet)</li>
+            <li class="ok">Несколько устройств одновременно</li>
+            <li class="ok">Работа из дома</li>
+            <li class="ok">Лёгкий гейминг (не про-уровень)</li>
+            <li class="no">Не для онлайн-игр с низким пингом</li>
+          </ul>
           <a href="https://t.me/mrbr4z" target="_blank" rel="noopener" class="btn btn-primary">Купить</a>
         </div>
         <div class="plan plan-ded reveal d3">
@@ -894,10 +954,17 @@
           <div class="pdev">∞ устройств</div>
           <div class="pprice">399₽<span> /мес</span></div>
           <div class="pspeed">
-            <div class="row"><span class="lbl">Норма</span><span class="val">300 Мбит/с</span></div>
-            <div class="row"><span class="lbl">Нагрузка</span><span class="val">300 Мбит/с</span></div>
+            <div class="row"><span class="lbl">Норма</span><span class="val">600 Мбит/с</span></div>
+            <div class="row"><span class="lbl">Нагрузка</span><span class="val">600 Мбит/с</span></div>
             <div class="row"><span class="lbl">Приоритет QoS</span><span class="val">свой сервер</span></div>
           </div>
+          <ul class="puse">
+            <li class="ok">Всё что выше</li>
+            <li class="ok">Семья или небольшая команда</li>
+            <li class="ok">Торренты, большие загрузки</li>
+            <li class="ok">Стриминг без буферизации</li>
+            <li class="ok">Никаких соседей на канале</li>
+          </ul>
           <a href="https://t.me/mrbr4z" target="_blank" rel="noopener" class="btn btn-outline">Купить</a>
         </div>
       </div>
@@ -1026,20 +1093,45 @@
             <tr><td>Протокол</td><td>устаревший</td><td class="ours">VLESS/Xray</td></tr>
             <tr><td>Логи</td><td>часто да</td><td class="ours"><span class="yes">нет</span></td></tr>
             <tr><td>Ночной буст</td><td><span class="no">Нет</span></td><td class="ours"><span class="yes">Да</span></td></tr>
+            <tr><td>Честные минусы</td><td><span class="no">Нет</span></td><td class="ours"><span class="yes">Да</span></td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- ============ HONEST CONS ============ -->
-  <section class="section-pad" id="honest">
+  <!-- ============ WHAT TO KNOW BEFORE BUYING ============ -->
+  <section class="section-pad section-warn" id="honest">
     <div class="wrap">
       <div class="head-center reveal">
-        <div class="eyebrow">Без прикрас</div>
-        <h2>Мы не молчим о минусах</h2>
-        <p class="section-lead">Любой VPN-сервис где-то недотягивает. Мы говорим об этом прямо — до оплаты, а не после.</p>
+        <div class="eyebrow warn-eyebrow">Честно о минусах</div>
+        <h2>Что нужно знать до покупки</h2>
+        <p class="section-lead">Мы не прячем минусы. Лучше узнать сейчас, чем разочароваться потом.</p>
       </div>
+      <div class="cards-3 know-cards">
+        <div class="card know reveal d1">
+          <div class="card-icon warn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <h3>Почему так дёшево?</h3>
+          <p>Мы используем небольшие серверы с ограниченным числом пользователей. Никакого офиса, никаких менеджеров, никакой рекламы на ТВ. Только сервер, протокол и бот. Это позволяет держать цену в 3–5 раз ниже рынка. Компромисс — скорость не безлимитная.</p>
+        </div>
+        <div class="card know reveal d2">
+          <div class="card-icon warn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          </div>
+          <h3>Почему скорость не гигабитная?</h3>
+          <p>Наш VPN — не про рекорды скорости. Он про стабильность за минимальные деньги. Старт даёт 150 Мбит/с в норме и 30 Мбит/с в пиковые часы. Этого хватает для мессенджеров, браузера и YouTube 1080p. Нужен 4K на 10 устройствах — бери Стабильный или Выделенный. Нужен гигабит — мы честно не для тебя.</p>
+        </div>
+        <div class="card know reveal d3">
+          <div class="card-icon warn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <h3>Для кого этот VPN?</h3>
+          <p>Для тех, кому нужен рабочий VPN каждый день без переплаты. Мессенджеры, браузер, соцсети, YouTube — всё работает стабильно даже на самом дешёвом тарифе. Мы не продаём «безлимитную скорость» и «серверы в 100 странах». Мы продаём честный минималистичный VPN за честную цену.</p>
+        </div>
+      </div>
+
       <div class="cons-list">
         <div class="con reveal d1">
           <span class="con-mark">
@@ -1091,7 +1183,7 @@
         </div>
         <div class="faq-item reveal d2">
           <button class="faq-q">Почему такая низкая цена?<span class="faq-ico"></span></button>
-          <div class="faq-a"><div class="faq-a-inner">Мы используем маленькие серверы с малым числом пользователей, автоматизированную выдачу ключей и минимум накладных расходов. Никакого офиса, никаких менеджеров.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Маленькие серверы, мало пользователей, автоматизация. Никакого офиса и менеджеров. Компромисс — скорость не безлимитная, читай раздел «Что нужно знать до покупки».</div></div>
         </div>
         <div class="faq-item reveal d2">
           <button class="faq-q">Что такое скорость при нагрузке?<span class="faq-ico"></span></button>
